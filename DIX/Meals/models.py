@@ -2,6 +2,13 @@
 from django.db import models
 from django.template import loader
 
+class Components(models.Model):
+    name = models.CharField(max_length = 30)
+    waste = models.FloatField()
+    units = models.CharField(max_length = 10)
+    def __str__(self):
+        return self.name
+
 
 class Meals(models.Model):
 
@@ -13,7 +20,7 @@ class Meals(models.Model):
 
     name = models.CharField(max_length = 60)
     description = models.CharField(max_length = 500)
-    components = models.CharField(max_length = 400)
+    components = models.ManyToManyField(Components)
     callories = models.CharField(max_length = 10)
     type = models.CharField(
         max_length=10,
@@ -24,9 +31,4 @@ class Meals(models.Model):
     def __str__(self):
         return self.name
 
-class Components(models.Model):
-    name = models.CharField(max_length = 30)
-
-    def __str__(self):
-        return self.name
 

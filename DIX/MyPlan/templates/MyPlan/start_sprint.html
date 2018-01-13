@@ -41,9 +41,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="all/">Moje plany żywieniowe</a></li>
-                        <li><a href="my_plans">Moje plany treningowe</a></li>
+                        <li><a href="#">Moje plany treningowe</a></li>
                     </ul>
-                </li>
+                 </li>
 
             </ul>
 
@@ -64,22 +64,15 @@
             </ul>
         </div>
     </nav>
-    <h1>Moje plany zywieniowe</h1>
-    <hr>
 
-    {% for i in my_plans %}
-    <div class = "col-sm-12 text-center">
+    <h1>Your sprint is started</h1>
+    <div class = "text-center">
+        <h3>Lista zakupow na sprint</h3>
+            {%for key, value in components.iteritems%}
+                        <p>{{key}} =  {{value}}</p>
+            {%endfor%}
+        <hr>
 
-        <p>{{i.plan_date}}</p>
-        <p>{{i.id}}</p>
-            {% for j in i.meals.all %}
-                <div class = "col-sm-4 text-center">
-                    <p>{{ j }}</p>
-                    <p>{{ j.type }}</p>
-                </div>
-            {% endfor %}
     </div>
-    {% endfor %}
-
 </body>
 </html>
