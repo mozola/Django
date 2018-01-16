@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.template import loader
+import os
+from django.conf import settings
 
 class Components(models.Model):
     name = models.CharField(max_length = 30)
@@ -26,7 +28,8 @@ class Meals(models.Model):
         max_length=10,
         choices=choice_list
     )
-    image = models.ImageField(upload_to = 'Meals/static/meals/image', default = 'Meals/static/meals/image')
+    image = models.ImageField(upload_to = 'Meals/static/jpg/',
+                              default = 'static/jpg/')
 
     def __str__(self):
         return self.name
