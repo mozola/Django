@@ -24,11 +24,6 @@ class Sprints(models.Model):
     sprint_parameters = models.ManyToManyField(SinglePlan)
     sprint_status = models.CharField(choices=choices , max_length=10)
 
-#    def clean(self , *args, **kwargs):
-#        if self.sprint_parameters.count() > 7:
-#            raise ValidationError("You can't assign more than seven plans on one sprint")
-#        super(Sprints, self).clean(*args, **kwargs)
-
     def __str__(self):
         return str('Id: {}, Name: {}, State: {}'.format(self.sprint_id, self.sprint_name, self.sprint_status))
 
