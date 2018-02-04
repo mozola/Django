@@ -73,8 +73,10 @@
     </div>
 
         {% for meal in my.plans.meals%}
-
-            <p>{{ meal.name }} <input type = checkbox></p>
+            <p>{{meal_id}}</p>
+            <p>{{ meal.name }}
+                <input type = checkbox>
+            </p>
 
         {% endfor %}
 

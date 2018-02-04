@@ -51,13 +51,29 @@
                     <a class="nav-link" href="/about/">O nas</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/meals/">Posiłki</a>
+                <li class="drop-down">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/meals/">
+                        Posiłki
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="all/">Wszystkie posiłki</a></li>
+                        <li><a href="my_plans">Dodan nowy posiłek</a></li>
+                        <li><a href="my_plans">Dodaj nowy składnik</a></li>
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/exercises/">Ćwiczenia</a>
-                </li>
+                <li class="drop-down">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/exercises/">
+                        Ćwiczenia
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="all/">Wszystkie ćwiczenia</a></li>
+                        <li><a href="my_plans">Dodan nowe ćwiczenie</a></li>
+                    </ul>
+                 </li>
+
 
                 <li class="drop-down">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="/my_plans/">
@@ -75,15 +91,12 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="/admin/">
-                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Wyloguj się {{ user.username }}
-                        </a>
+                        <a href="/user/logout/">
+                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Wyloguj się</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                       <form class="form-inline" action="/admin/">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Login">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Hasło">
+                       <form class="form-inline" action="/user/login/">
                           <button class="btn btn-success" type="submit">Zaloguj</button>
                        </form>
                     </li>
@@ -91,7 +104,7 @@
             </ul>
         </div>
     </nav>
-
+<body>
     {% block content %}
 
     {% endblock %}
