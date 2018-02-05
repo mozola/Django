@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
+
 from Meals.models import Meals
+from include import mail
+
 from .models import SinglePlan
 from .models import Sprints
-import smtplib
-import mail as Mail
+
 
 def index(request):
 
@@ -17,10 +19,14 @@ def my_plans(request):
     return render(request, 'MyPlan/my_plans.html', {'my_plans': SinglePlan.objects.all()})
 
 def start_sprint(request):
-    sprints = Sprints.objects.all()
     components = {}
 
-    for sprint in sprints:
+    for sprint in Sprints.objects.all():
+        if sprint.sprint_status == 'Nowy':
+            print('Nowy sprint : {}'.format(sprint.sprint_id))
+            sprint.sprint_status = 'Rozpoczety'
+            sprint.save()
+
         for sprint_param in sprint.sprint_parameters.all():
             for single in sprint_param.meals.all():
                 for a in single.components.all():
@@ -28,5 +34,6 @@ def start_sprint(request):
                         components[a.name] = a.waste
                     else:
                         components[a.name] = components[a.name] + a.waste
-    Mail.send_main(components)
+
+    mail.send_main(components)
     return render(request, 'MyPlan/start_sprint.html', {'components': components})

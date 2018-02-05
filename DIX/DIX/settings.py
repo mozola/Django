@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'Exercises',
     'MyPlan',
     'User',
+    'news',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
