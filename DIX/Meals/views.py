@@ -37,3 +37,6 @@ def index(request):
 
 def details(request, meal_id):
     return render(request, 'Meals/details.html', {'meals_id': Meals.objects.get(pk = meal_id)})
+
+def new_meal(request):
+    return render(request, 'Meals/new_meal.html')
