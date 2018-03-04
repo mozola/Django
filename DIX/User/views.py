@@ -18,7 +18,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'user/output.html', {'result': 'Udalo ci sie zalogowac'})
+                return render(request, 'user/output.html', {'result': 'Gratulacje\n udalo ci sie zalogowac.'})
         else:
             return render(request, 'user/output.html', {'result': 'Jestes juz zalogowany'})
 
