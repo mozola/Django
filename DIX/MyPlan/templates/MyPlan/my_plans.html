@@ -3,18 +3,16 @@
 
     <h1>Moje plany zywieniowe</h1>
     <hr>
-
     {% for i in my_plans %}
-    <div class = "col-sm-12 text-center">
+        <p> {{ i.sprint_name }}</p>
 
-        <p>{{i.plan_date}}</p>
-        <p>{{i.id}}</p>
-            {% for j in i.meals.all %}
-                <div class = "col-sm-4 text-center">
-                    <p>{{ j }}</p>
-                    <p>{{ j.type }}</p>
-                </div>
+        {% for single_plan in i.sprint_parameters.all %}
+            <p>{{single_plan.plan_date}}</p>
+            {% for meals in single_plan.meals.all %}
+                <p style="margin-left:4em">{{ meals.name }} {{ meals.state }}</p>
             {% endfor %}
-    </div>
+        {% endfor %}
+        <hr>
+
     {% endfor %}
 {% endblock %}
