@@ -1,0 +1,21 @@
+language: python
+
+python:
+ - "2.6"
+ - "2.7"
+ - "3.2"
+
+env:
+ - DJANGO=1.3
+ - DJANGO=1.4
+
+#command to install dependencis
+install:
+ - pip install -q Django==$DJANGO --use--mirrors
+ - pip install -q . --use--mirrors
+ - pip install -r requirements.txt --use--mirrors
+
+#command to run tests
+script: python manage.py test
+
+
